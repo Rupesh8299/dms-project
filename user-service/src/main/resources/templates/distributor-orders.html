@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Distributor Orders</title>
+</head>
+<body>
+    <h1>My Orders</h1>
+
+    <div th:if="${message}" style="color: green;">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <div th:if="${orders}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Fulfilled</th>
+                    <th>Pending</th>
+                    <th>ETA Days</th>
+                    <th>Customer Message</th>
+                    <th>Admin Response</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="o : ${orders}">
+                    <td th:text="${o.id}"></td>
+                    <td th:text="${o.productId}"></td>
+                    <td th:text="${o.quantity}"></td>
+                    <td th:text="${o.status}"></td>
+                    <td th:text="${o.fulfilledQuantity}"></td>
+                    <td th:text="${o.pendingQuantity}"></td>
+                    <td th:text="${o.estimatedFulfillmentDays}"></td>
+                    <td th:text="${o.customMessage}"></td>
+                    <td th:text="${o.adminMessage}"></td>
+                    <td th:text="${o.createdAt}"></td>
+                    <td>
+                        <form th:action="@{/users/distributor/orders/{id}/delete(id=${o.id})}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        <a href="/users/distributor/products">Continue Shopping</a> |
+        <a href="/users/distributor/dashboard">Dashboard</a> |
+        <a href="/users/logout">Logout</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+    <div th:if="${message}" style="color: green;">
+        <p th:text="${message}"></p>
+    </div>
+    <form action="#" th:action="@{/users/register}" th:object="${registerRequest}" method="post">
+        <input type="hidden" th:field="*{role}" value="DISTRIBUTOR"/>
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" required><br><br>
+
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <h3>Distributor Details</h3>
+            <label for="distributorName">Distributor Name:</label>
+            <input type="text" id="distributorName" th:field="*{distributorName}" required><br><br>
+
+            <label for="distributorEmail">Distributor Email:</label>
+            <input type="email" id="distributorEmail" th:field="*{distributorEmail}" required><br><br>
+
+            <label for="distributorCity">City:</label>
+            <input type="text" id="distributorCity" th:field="*{distributorCity}" required><br><br>
+
+            <label for="distributorContact">Contact:</label>
+            <input type="text" id="distributorContact" th:field="*{distributorContact}" required><br><br>
+        </div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" required><br><br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" th:field="*{confirmPassword}" required><br><br>
+        <button type="submit">Register as Distributor</button>
+    </form>
+    <p><a href="/users/login">Login</a></p>
+
+</body>
+</html>

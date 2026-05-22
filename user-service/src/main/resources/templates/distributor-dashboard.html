@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Distributor Dashboard</title>
+</head>
+<body>
+    <h1>Distributor Dashboard</h1>
+    <p>Welcome, <span th:text="${distributor.name}">Distributor</span> (<span th:text="${distributor.username}"></span>)</p>
+
+    <h2>Profile</h2>
+    <p>Username: <span th:text="${distributor.username}"></span></p>
+    <p>Name: <span th:text="${distributor.name}"></span></p>
+    <p>Email: <span th:text="${distributor.email}"></span></p>
+    <p>City: <span th:text="${distributor.city}"></span></p>
+    <p>Contact: <span th:text="${distributor.contact}"></span></p>
+
+    <h2>Actions</h2>
+    <p>
+        <a href="/users/distributor/products">Browse Products</a> |
+        <a href="/users/distributor/orders">My Orders</a> |
+        <a href="/users/distributor/order/create">Place Order</a>
+    </p>
+
+    <p>
+        <a href="/users/distributor/profile">Edit Profile</a> |
+        <a href="/users/logout">Logout</a>
+    </p>
+</body>
+</html>

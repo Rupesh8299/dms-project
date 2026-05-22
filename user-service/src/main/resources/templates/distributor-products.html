@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Distributor Products</title>
+</head>
+<body>
+    <h1>Available Products</h1>
+
+    <div th:if="${message}" style="color: green;">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <p>
+        <a href="/users/distributor/orders">My Orders</a> |
+        <a href="/users/distributor/dashboard">Dashboard</a> |
+        <a href="/users/logout">Logout</a>
+    </p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Vehicle Type</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${products}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.vehicleType}"></td>
+                <td th:text="${p.size}"></td>
+                <td th:text="${p.description}"></td>
+                <td th:text="${p.price}"></td>
+                <td><a th:href="@{/users/distributor/order/create(productId=${p.id})}">Place Order</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
